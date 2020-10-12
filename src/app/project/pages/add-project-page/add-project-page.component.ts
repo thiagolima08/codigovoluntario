@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from './../../services/project.service';
 import { Project } from './../../models/project';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-add-project-page',
@@ -9,17 +10,28 @@ import { Project } from './../../models/project';
 })
 export class AddProjectPageComponent implements OnInit {
 
+  projectNew: Project;
   projects: Project[];
 
-  constructor(projectService: ProjectService) {
+  form: FormGroup;
+
+  constructor(private projectService: ProjectService, private fb: FormBuilder) {
     this.projects = projectService.get();
+    this.projectNew = new Project();
   }
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      name: [null],
+      url: [null],
+      description: [null],
+      tags: [null]
+    });
   }
 
-  alert(text: string) {
-    window.alert(text);
+  insertProject(): void {
+    this.projectNew = this.form.value;
+    this.projects.push(this.projectNew);
   }
 
 }
