@@ -7,6 +7,7 @@ import { ProjectCardComponent } from './components/project-card/project-card.com
 import { ProjectFormComponent } from './components/project-form/project-form.component';
 
 import { MaterialModule } from './../material.module';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MaterialModule } from './../material.module';
   imports: [
     CommonModule,
     MaterialModule,
+    RouterModule,
   ]
 })
 export class ProjectModule { }
