@@ -5,6 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MaterialModule } from './material.module';
+
+import { ClassificationModule } from './classification/classification.module';
+import { CommentModule } from './comment/comment.module';
+import { ProjectModule } from './project/project.module';
+import { UserModule } from './user/user.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -12,7 +19,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule,
+    ClassificationModule,
+    CommentModule,
+    ProjectModule,
+    UserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
