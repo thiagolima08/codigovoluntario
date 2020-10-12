@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Project } from '../models/project';
+import { Filter } from '../models/filter';
 
-class Filter {
-  name?: string;
-  url?: string;
-  description?: string;
-  tags?: string[];
-}
 
 @Injectable({
   providedIn: 'root'
@@ -14,26 +9,37 @@ class Filter {
 export class ProjectService {
 
   private projects: Project[];
+  private lastId: number;
 
   constructor() {
-    this.projects.push({
+    this.projects = [];
+    this.lastId = 0;
+
+    this.add({
       name: 'Código voluntário',
       url: 'https://github.com/thiagolima08/codigovoluntario',
-      description: '',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       tags: ['Angular', 'TypeScript']
     });
 
-    this.projects.push({
+    this.add({
       name: 'Cool project',
       url: 'https://github.com',
-      description: '',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       tags: ['Node', 'TypeScript']
     });
 
-    this.projects.push({
+    this.add({
       name: 'Another cool project',
       url: 'https://github.com',
-      description: '',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      tags: ['C++']
+    });
+
+    this.add({
+      name: 'Yet Another cool project',
+      url: 'https://github.com',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       tags: ['C++']
     });
   }
@@ -61,7 +67,7 @@ export class ProjectService {
   }
 
   add(project: Project) {
-    this.projects.push(project);
+    this.projects.push({...project, id: this.lastId++});
   }
 
   remove(project: Project) {

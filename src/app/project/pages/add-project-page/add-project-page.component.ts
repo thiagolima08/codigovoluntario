@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectService } from './../../services/project.service';
+import { Project } from './../../models/project';
 
 @Component({
   selector: 'app-add-project-page',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddProjectPageComponent implements OnInit {
 
-  constructor() { }
+  projects: Project[];
+
+  constructor(projectService: ProjectService) {
+    this.projects = projectService.get();
+  }
 
   ngOnInit(): void {
+  }
+
+  alert(text: string) {
+    window.alert(text);
   }
 
 }

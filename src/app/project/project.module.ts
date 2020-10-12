@@ -5,15 +5,20 @@ import { GetProjectPageComponent } from './pages/get-project-page/get-project-pa
 import { ProjectFilterComponent } from './components/project-filter/project-filter.component';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
 import { ProjectFormComponent } from './components/project-form/project-form.component';
-import { ProjectListComponent } from './components/project-list/project-list.component';
 
 import { MaterialModule } from './../material.module';
 
 @NgModule({
-  declarations: [AddProjectPageComponent, GetProjectPageComponent, ProjectFilterComponent, ProjectCardComponent, ProjectFormComponent, ProjectListComponent],
+  declarations: [
+    AddProjectPageComponent,
+    GetProjectPageComponent,
+    ProjectFilterComponent,
+    ProjectCardComponent,
+    ProjectFormComponent,
+  ],
   exports: [
     AddProjectPageComponent,
-    AddProjectPageComponent
+    AddProjectPageComponent,
   ],
   imports: [
     CommonModule,
