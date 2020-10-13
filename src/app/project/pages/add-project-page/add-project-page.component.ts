@@ -10,15 +10,15 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class AddProjectPageComponent implements OnInit {
 
-  projectNew: Project;
-  projects: Project[];
-
-  form: FormGroup;
-
   constructor(private projectService: ProjectService, private fb: FormBuilder) {
     this.projects = projectService.get();
     this.projectNew = new Project();
   }
+
+  projectNew: Project;
+  projects: Project[];
+
+  form: FormGroup;
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -28,8 +28,10 @@ export class AddProjectPageComponent implements OnInit {
       tags: [null]
     });
   }
-
   insertProject(): void {
+    let t = this.form.value.tags.split(',');
+    t = t.map( i => i.trim());
+    this.form.value.tags = t;
     this.projectNew = this.form.value;
     this.projects.push(this.projectNew);
   }
