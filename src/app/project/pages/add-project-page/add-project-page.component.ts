@@ -12,30 +12,32 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AddProjectPageComponent implements OnInit {
 
   constructor(private projectService: ProjectService, private fb: FormBuilder, private snackbar: MatSnackBar) {
-    this.projects = projectService.get();
-    this.projectNew = new Project();
   }
 
   projectNew: Project;
-  projects: Project[];
-
   form: FormGroup;
 
   ngOnInit(): void {
     this.form = this.fb.group({
+      id: [null],
       name: [null],
       url: [null],
       description: [null],
       tags: [null]
     });
   }
+
   insertProject(): void {
+    this.projectService.getProjects().subscribe(p => this.form.value.id = p.length + 1);
     let t = this.form.value.tags.split(',');
     t = t.map( i => i.trim());
     this.form.value.tags = t;
     this.projectNew = this.form.value;
-    this.projects.push(this.projectNew);
+    this.projectService.addProject(this.projectNew).subscribe(
+      project => console.log(project)
+    );
     this.openSnackBar();
+    this.form.reset();
   }
 
   openSnackBar(message: string = 'Projeto adicionado!' , action: string = 'Fechar'): void {

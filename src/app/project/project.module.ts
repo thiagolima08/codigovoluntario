@@ -8,6 +8,8 @@ import { ProjectFormComponent } from './components/project-form/project-form.com
 
 import { MaterialModule } from './../material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatTooltipModule
   ]
 })
 export class ProjectModule { }

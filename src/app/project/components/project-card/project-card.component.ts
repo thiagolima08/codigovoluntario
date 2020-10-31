@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Project } from '../../models/project';
+import {AddProjectPageComponent} from '../../pages/add-project-page/add-project-page.component';
+import {ProjectService} from '../../services/project.service';
 
 @Component({
   selector: 'app-project-card',
@@ -8,12 +10,12 @@ import { Project } from '../../models/project';
 })
 export class ProjectCardComponent implements OnInit {
 
-  @Input()
-  project: Project;
+  projects: Project[];
 
-  constructor() { }
+  constructor(private projectService: ProjectService) { }
 
   ngOnInit(): void {
+    this.projectService.getProjects().subscribe(p =>  this.projects = p);
   }
 
 }

@@ -1,6 +1,5 @@
-<section style="position: relative; min-height: calc(100vh - 64px);">
-  <p>Componente de adição até o roteamento</p>
-
+<!--style="position: relative; min-height: calc(100vh - 64px);"-->
+<section>
   <!--  add-->
   <form [formGroup]="form">
     <div class="form-container">
@@ -26,19 +25,12 @@
       <button
         mat-fab
         color="primary"
+        matTooltip="Adicionar Projeto"
         (click)="insertProject()"
       >
         <mat-icon>add</mat-icon>
       </button>
     </div>
   </form>
-
-
 <br>
-  <p>Componente de filtro</p>
-
-  <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around;">
-    <app-project-card [project]="project" *ngFor="let project of projects"></app-project-card>
-  </div>
-
 </section>

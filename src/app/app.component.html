@@ -1,5 +1,10 @@
 <mat-toolbar color="primary">
-  <span>Código voluntário</span>
+  <button mat-button [matMenuTriggerFor]="menu">Código voluntário</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item><a routerLink="">Adicionar Projeto</a></button>
+    <button mat-menu-item><a routerLink="/listarprojetos">Listar Projetos</a></button>
+  </mat-menu>
 </mat-toolbar>
+<br>
+<router-outlet></router-outlet>
 
-<app-add-project-page></app-add-project-page>
