@@ -29,7 +29,7 @@ export class AddProjectPageComponent implements OnInit {
             name: [p.name],
             url: [p.url],
             description: [p.description],
-            tags: [p.tags]
+            tags: [p.tags.join(',')]
           });
         });
       }
