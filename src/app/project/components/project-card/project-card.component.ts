@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Project } from '../../models/project';
 import {AddProjectPageComponent} from '../../pages/add-project-page/add-project-page.component';
 import {ProjectService} from '../../services/project.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-card',
@@ -13,10 +14,14 @@ export class ProjectCardComponent implements OnInit {
 
   projects: Project[];
 
-  constructor(private projectService: ProjectService) { }
+  constructor(private projectService: ProjectService, private router: Router ) { }
 
   ngOnInit(): void {
     this.projectService.getProjects().subscribe(p =>  this.projects = p);
+  }
+
+  update(id: number): void {
+    this.router.navigate([ `/project/${id}` ])
   }
 
   delete(id: number): void {
