@@ -42,7 +42,7 @@ export class AddProjectPageComponent implements OnInit {
 
   openSnackBar(message: string = 'Projeto adicionado!' , action: string = 'Fechar'): void {
     this.snackbar.open(message, action, {
-      duration: 2000,
+      duration: 4000,
     });
   }
 

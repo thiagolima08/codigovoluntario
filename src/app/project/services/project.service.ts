@@ -8,8 +8,8 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ProjectService {
-  URL_PROJECTS = 'https://my-json-server.typicode.com/thiagolima08/codigovoluntario/projects/';
-
+  // URL_PROJECTS = 'https://my-json-server.typicode.com/thiagolima08/codigovoluntario/projects/'; Comentado apenas para realizar testes
+  URL_PROJECTS = 'http://localhost:3000/projects';
   constructor(private httpClient: HttpClient) {
   }
 
