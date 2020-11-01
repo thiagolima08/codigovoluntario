@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { Project } from '../../models/project';
 import {AddProjectPageComponent} from '../../pages/add-project-page/add-project-page.component';
@@ -18,4 +19,11 @@ export class ProjectCardComponent implements OnInit {
     this.projectService.getProjects().subscribe(p =>  this.projects = p);
   }
 
+  delete(id: number): void {
+    this.projectService.deleteProject(id).subscribe(() => {
+      this.projects = this.projects.filter(p => p.id !== id);
+
+      console.debug(`${id} deleted`);
+    });
+  }
 }
