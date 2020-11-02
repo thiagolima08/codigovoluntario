@@ -16,8 +16,8 @@
       </mat-chip-list>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button color="primary">Editar</button>
-      <button mat-button color="accent">Remover</button>
+      <button mat-button color="primary" (click)="update(project.id)">Editar</button>
+      <button mat-button color="accent" (click)="delete(project.id)">Remover</button>
     </mat-card-actions>
   </mat-card>
 </div>

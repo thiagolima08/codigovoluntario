@@ -9,50 +9,30 @@ import {Observable} from 'rxjs';
 })
 export class ProjectService {
   URL_PROJECTS = 'https://my-json-server.typicode.com/thiagolima08/codigovoluntario/projects/';
+
   // URL_PROJECTS = 'http://localhost:3000/projects'; testando o json server
+
   constructor(private httpClient: HttpClient) {
   }
-
-  // get(filter: Filter={}) {
-  //   let result = this.projects.map((p) => p); // Shallow Clone
-  //
-  //   if (filter.name) {
-  //     result = result.filter((p) => p.name.includes(filter.name));
-  //   }
-  //
-  //   if (filter.url) {
-  //     result = result.filter((p) => p.url.includes(filter.url));
-  //   }
-  //
-  //   if (filter.description) {
-  //     result = result.filter((p) => p.description.includes(filter.description));
-  //   }
-  //
-  //   if (filter.tags) {
-  //     result = result.filter((p) => filter.tags.reduce((result, current) => result || p.tags.includes(current), false));
-  //   }
-  //
-  //   return result;
-  // }
-
-  // add(project: Project) {
-  //   this.projects.push({...project, id: this.lastId++});
-  // }
-  //
-  // remove(project: Project) {
-  //   const index = this.projects.indexOf(project);
-  //
-  //   if (index >= 0) {
-  //     this.projects.splice(index, 1);
-  //   }
-  // }
 
   getProjects(): Observable<Project[]> {
     return this.httpClient.get<Project[]>(this.URL_PROJECTS);
   }
 
+  getProject(id: number): Observable<Project> {
+    return this.httpClient.get<Project>(`${this.URL_PROJECTS}${id}`);
+  }
+
   addProject(project: Project): Observable<Project>{
     return this.httpClient.post<Project>(this.URL_PROJECTS, project);
+  }
+
+  updateProject(project: Project): Observable<Project>{
+    return this.httpClient.put<Project>(`${this.URL_PROJECTS}${project.id}`, project);
+  }
+
+  deleteProject(id: number): Observable<any> {
+    return this.httpClient.delete<Project>(`${this.URL_PROJECTS}${id}`);
   }
 
 }
