@@ -17,27 +17,28 @@ export class ProjectFirestoreService {
     this.colecaoProject = afs.collection(this.NOME_COLECAO);
   }
 
-  listarProject(): Observable<Project[]> {
+  getProjectFirestore(): Observable<Project[]> {
     return this.colecaoProject.valueChanges({idField: 'id'});
   }
 
   // @ts-ignore
-  inserirProject(projeto: Project ): Observable<object>{
+  addProjectFirestore(projeto: Project ): Observable<object>{
     delete projeto.id;
 
     return from(this.colecaoProject.add(Object.assign({}, projeto)));
   }
 
-  removerProject(id: string): Observable<void>{
+  deleteProjectFirestore(id: string): Observable<void>{
+    // @ts-ignore
     return from(this.colecaoProject.doc(id).delete());
   }
 
-  pesquisarProjectPorId(id: string): Observable<Project>{
-    return this.colecaoProject.doc(id).get().pipe(map(document => new Project(document.id, document.data())));
+  getProjectPorIdFirestore(id: string): Observable<Project>{
+    return this.colecaoProject.doc(id).get().pipe(map(document => new Project()));
 
   }
 
-  atualizarProject(projeto: Project): Observable<void>{
+  updateProjectFirestore(projeto: Project): Observable<void>{
     delete projeto.id;
     // @ts-ignore
     return from(this.colecaoProject.doc(projeto.id).update(Object.assign({}, projeto)));
