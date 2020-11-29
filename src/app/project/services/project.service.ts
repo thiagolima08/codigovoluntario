@@ -8,8 +8,10 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ProjectService {
-  URL_PROJECTS = 'https://my-json-server.typicode.com/thiagolima08/codigovoluntario/projects/';
-  // URL_PROJECTS = 'http://localhost:3000/projects/';
+  // URL_PROJECTS = 'https://my-json-server.typicode.com/thiagolima08/codigovoluntario/projects/';
+  URL_PROJECTS = '';
+
+  // URL_PROJECTS = 'http://localhost:3000/projects'; testando o json server
 
   constructor(private httpClient: HttpClient) {
   }
@@ -33,4 +35,5 @@ export class ProjectService {
   deleteProject(id: number): Observable<any> {
     return this.httpClient.delete<Project>(`${this.URL_PROJECTS}${id}`);
   }
+
 }

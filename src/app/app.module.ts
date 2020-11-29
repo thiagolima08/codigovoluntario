@@ -11,6 +11,7 @@ import { ClassificationModule } from './classification/classification.module';
 import { CommentModule } from './comment/comment.module';
 import { ProjectModule } from './project/project.module';
 import { UserModule } from './user/user.module';
+import { FirestoreModule } from './firestore/firestore.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { UserModule } from './user/user.module';
     CommentModule,
     ProjectModule,
     UserModule,
+    FirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

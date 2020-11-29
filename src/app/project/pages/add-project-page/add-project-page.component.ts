@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectService } from './../../services/project.service';
+// import { ProjectService } from './../../services/project.service';
 import { Project } from './../../models/project';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import {ProjectFirestoreService} from '../../services/project-firestore.service';
 
 @Component({
   selector: 'app-add-project-page',
@@ -12,18 +13,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AddProjectPageComponent implements OnInit {
 
-  constructor(private projectService: ProjectService, private fb: FormBuilder, private snackbar: MatSnackBar,  private route: ActivatedRoute) {
+  constructor(private projectService: ProjectFirestoreService, private fb: FormBuilder, private snackbar: MatSnackBar,  private route: ActivatedRoute) {
   }
 
   projectNew: Project;
   form: FormGroup;
-  id: number;
+  id: string;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       if (params.get('id')) {
-        this.id = Number(params.get('id'));
-        this.projectService.getProject(this.id).subscribe(p => {
+        this.id = String(params.get('id'));
+        this.projectService.getProjectPorIdFirestore(this.id).subscribe(p => {
           this.form = this.fb.group({
             id: [p.id],
             name: [p.name],
@@ -49,18 +50,18 @@ export class AddProjectPageComponent implements OnInit {
       t = t.map( i => i.trim());
       this.form.value.tags = t;
       this.projectNew = this.form.value;
-      this.projectService.updateProject(this.projectNew).subscribe(
+      this.projectService.updateProjectFirestore(this.projectNew).subscribe(
         project => console.log(project)
       );
       this.openSnackBar();
       this.form.reset();
     } else {
-      this.projectService.getProjects().subscribe(p => this.form.value.id = p.length + 1);
+      this.projectService.getProjectFirestore().subscribe(p => this.form.value.id = p.length + 1);
       let t = this.form.value.tags.split(',');
       t = t.map( i => i.trim());
       this.form.value.tags = t;
       this.projectNew = this.form.value;
-      this.projectService.addProject(this.projectNew).subscribe(
+      this.projectService.addProjectFirestore(this.projectNew).subscribe(
         project => console.log(project)
       );
       this.openSnackBar();
