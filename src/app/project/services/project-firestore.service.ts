@@ -21,7 +21,6 @@ export class ProjectFirestoreService {
     return this.colecaoProject.valueChanges({idField: 'id'});
   }
 
-  // @ts-ignore
   addProjectFirestore(projeto: Project ): Observable<object>{
     delete projeto.id;
 
@@ -29,7 +28,6 @@ export class ProjectFirestoreService {
   }
 
   deleteProjectFirestore(id: string): Observable<void>{
-    // @ts-ignore
     return from(this.colecaoProject.doc(id).delete());
   }
 
@@ -40,7 +38,6 @@ export class ProjectFirestoreService {
 
   updateProjectFirestore(projeto: Project): Observable<void>{
     delete projeto.id;
-    // @ts-ignore
     return from(this.colecaoProject.doc(projeto.id).update(Object.assign({}, projeto)));
   }
 }

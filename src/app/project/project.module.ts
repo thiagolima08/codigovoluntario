@@ -10,6 +10,7 @@ import { MaterialModule } from './../material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {FirestoreModule} from '../firestore/firestore.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatTooltipModule
+    MatTooltipModule,
+    FirestoreModule
   ]
 })
 export class ProjectModule { }

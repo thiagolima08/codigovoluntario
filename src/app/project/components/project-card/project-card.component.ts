@@ -18,8 +18,7 @@ export class ProjectCardComponent implements OnInit {
   constructor(private projectService: ProjectFirestoreService, private router: Router ) { }
 
   ngOnInit(): void {
-    // @ts-ignore
-    this.projectService.getProjectPorIdFirestore(this.id).subscribe(p =>  this.projects = p);
+    this.projectService.getProjectFirestore().subscribe(p =>  this.projects = p);
   }
 
   update(id: string): void {
@@ -28,7 +27,6 @@ export class ProjectCardComponent implements OnInit {
 
   delete(id: string): void {
     this.projectService.deleteProjectFirestore(id).subscribe(() => {
-      // @ts-ignore
       this.projects = this.projects.filter(p => p.id !== id);
 
       // console.debug(`${id} deleted`);
