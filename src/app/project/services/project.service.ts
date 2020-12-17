@@ -7,10 +7,11 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ProjectService {
-  URL_PROJECTS = 'https://my-json-server.typicode.com/thiagolima08/codigovoluntario/projects/';
-  // URL_PROJECTS = ' https://codigo-voluntario.herokuapp.com/projects';
-
+  // URL_PROJECTS = 'https://my-json-server.typicode.com/thiagolima08/codigovoluntario/projects/';
+   // URL_PROJECTS = ' https://codigo-voluntario.herokuapp.com/projects';
   // URL_PROJECTS = 'http://localhost:3000/projects'; testando o json server
+
+  URL_PROJECTS = 'https://localhost:8080/projects';
 
   constructor(private httpClient: HttpClient) {
   }
