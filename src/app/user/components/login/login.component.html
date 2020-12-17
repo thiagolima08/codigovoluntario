@@ -1,0 +1,28 @@
+<main>
+  <div class="hero">
+    <img src="../assets/home-image.svg" alt="imagem hero">
+  </div>
+  <div class="brand">
+    <h1 style="font-size: 40px">Código Voluntário</h1>
+    <section style="display: flex;flex-flow: column;align-items: flex-end;justify-content: center">
+      <br>
+      <form [formGroup]="form" (ngSubmit)="onFormSubmit()" style="display: flex;flex-flow: column;align-items: flex-end">
+          <mat-form-field appearance="fill" style="min-width: 250px">
+            <mat-label>E-mail</mat-label>
+            <input matInput placeholder="email@example.com" formControlName="email">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill" style="min-width: 250px">
+            <mat-label>Senha</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button color="accent">Login</button>
+      </form>
+      <p><a routerLink="/sign-up">Cadastre-se</a></p>
+    </section>
+  </div>
+</main>

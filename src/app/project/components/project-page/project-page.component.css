@@ -1,0 +1,11 @@
+section{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.project-card {
+  max-width: 800px;
+  max-height: 600px;
+}
+

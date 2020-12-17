@@ -1,0 +1,45 @@
+<main>
+  <div class="hero">
+    <img src="../assets/home-image.svg" alt="imagem hero">
+  </div>
+  <div class="brand">
+    <h1 style="font-size: 40px">Código Voluntário</h1>
+    <button mat-raised-button color="accent"><a routerLink="/add-project">Adicione seu Projeto</a></button>
+  </div>
+</main>
+<br>
+<div class="filter" style="display: flex; justify-content: center" #target>
+  <mat-form-field style="min-width: 350px;">
+    <mat-label>Buscar Projeto</mat-label>
+    <input matInput placeholder="filtre por qualquer campo" (keyup)="filtrar(inputFiltro.value);" (focus)="scroll(target)" #inputFiltro>
+  </mat-form-field>
+</div>
+  <mat-table [dataSource]="dataSource" style="padding: 10px">
+    <mat-header-row *matHeaderRowDef="showColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: showColumns;"></mat-row>
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let item">{{item.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
+      <mat-cell *matCellDef="let item">
+        <a [routerLink]="['project-page',item.id]" style="text-decoration: none;">
+        {{ item.name }}
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>Descrição</mat-header-cell>
+      <mat-cell *matCellDef="let item">{{item.description}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tags">
+      <mat-header-cell *matHeaderCellDef>Tecnologias</mat-header-cell>
+      <mat-cell *matCellDef="let item">{{item.tags}}</mat-cell>
+    </ng-container>
+  </mat-table>
+

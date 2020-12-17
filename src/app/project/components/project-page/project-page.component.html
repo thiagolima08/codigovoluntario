@@ -1,0 +1,23 @@
+<section>
+  <mat-card class="project-card">
+      <mat-card-header>
+          <mat-card-title style="font-size: 16px;">{{project.name}}</mat-card-title>
+          <mat-card-subtitle style="margin-bottom: 30px;">
+            <a [href]="project.url">{{project.url}}</a>
+          </mat-card-subtitle>
+        <div style="margin-left: 300px">
+          <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="false" style="font-size: 20px; outline: 0; color: #D03771"></ngb-rating>
+        </div>
+      </mat-card-header>
+      <mat-chip-list>
+        <mat-chip *ngFor="let tag of project.tags" color="accent" selected>{{tag}}</mat-chip>
+      </mat-chip-list>
+      <br>
+      <mat-card-content>
+        <p>{{project.description}}</p>
+      </mat-card-content>
+  </mat-card>
+</section>
+
+
+

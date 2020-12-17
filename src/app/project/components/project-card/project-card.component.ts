@@ -1,7 +1,7 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { Project } from '../../models/project';
-import {AddProjectPageComponent} from '../../pages/add-project-page/add-project-page.component';
+import {AddProjectPageComponent} from '../add-project-page/add-project-page.component';
 import {ProjectService} from '../../services/project.service';
 import { Router } from '@angular/router';
 import {ProjectFirestoreService} from '../../services/project-firestore.service';
@@ -15,18 +15,19 @@ export class ProjectCardComponent implements OnInit {
 
   projects: Project[];
 
-  constructor(private projectService: ProjectFirestoreService, private router: Router ) { }
+  constructor(private projectService: ProjectService, private router: Router ) { }
 
   ngOnInit(): void {
-    this.projectService.getProjectFirestore().subscribe(p =>  this.projects = p);
+    this.projectService.getProjects().subscribe(p =>  this.projects = p);
   }
 
   update(id: string): void {
     this.router.navigate([ `/project/${id}` ]);
   }
 
-  delete(id: string): void {
-    this.projectService.deleteProjectFirestore(id).subscribe(() => {
+  delete(id: number): void {
+    this.projectService.deleteProject(id).subscribe(() => {
+      // @ts-ignore
       this.projects = this.projects.filter(p => p.id !== id);
 
       // console.debug(`${id} deleted`);

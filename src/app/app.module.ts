@@ -10,12 +10,17 @@ import { MaterialModule } from './material.module';
 import { ClassificationModule } from './classification/classification.module';
 import { CommentModule } from './comment/comment.module';
 import { ProjectModule } from './project/project.module';
+import {LoginModule} from './user/components/login/login.module';
 import { UserModule } from './user/user.module';
 import { FirestoreModule } from './firestore/firestore.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HomeComponent} from './home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +31,10 @@ import { FirestoreModule } from './firestore/firestore.module';
     CommentModule,
     ProjectModule,
     UserModule,
-    FirestoreModule
+    LoginModule,
+    FirestoreModule,
+    ReactiveFormsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

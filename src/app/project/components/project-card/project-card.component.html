@@ -2,7 +2,7 @@
   <mat-card style="margin: 15px; max-width: 350px; min-width: 300px;" *ngFor="let project of projects">
     <mat-card-header>
       <mat-card-title>
-        <a [href]="project.url">
+        <a [routerLink]="['project-page',project.id]" style="text-decoration: none;">
           {{ project.name }}
         </a>
       </mat-card-title>

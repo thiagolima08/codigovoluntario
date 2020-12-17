@@ -1,0 +1,38 @@
+
+main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+}
+
+main .hero img{
+  max-height: 80vh;
+  max-width: 80vw;
+  margin-top: 10px;
+}
+
+main .brand{
+  color: #4B4B5B;
+  margin-right: 20px
+}
+
+@media screen and (min-width: 1024px){
+  main{
+    flex-direction: row;
+  }
+
+  main .hero img{
+    height: 80vh;
+    display: block;
+  }
+}
+
+button {
+  width: 100px;
+}
+h3 {
+  font-weight: lighter;
+  font-size: small;
+}

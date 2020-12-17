@@ -1,0 +1,9 @@
+.form-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-container mat-form-field{
+  width: 500px;
+}
