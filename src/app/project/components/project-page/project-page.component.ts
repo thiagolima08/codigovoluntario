@@ -19,6 +19,7 @@ export class ProjectPageComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
     this.projectService.getProject(Number(this.id)).subscribe(p => this.project = p);
+    console.log(this.project);
   }
 
 }

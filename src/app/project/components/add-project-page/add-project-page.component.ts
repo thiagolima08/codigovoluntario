@@ -20,7 +20,7 @@ export class AddProjectPageComponent implements OnInit {
 
   projectNew: Project;
   form: FormGroup;
-  id: String;
+  id: string;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
